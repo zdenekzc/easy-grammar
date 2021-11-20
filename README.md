@@ -1,8 +1,7 @@
 # easy-grammar
 Parser generator written in Python 
 
-Simple C grammar
-================
+## Simple C grammar
 
 [input/cecko3.g](input/cecko3.g)
 
@@ -18,8 +17,7 @@ if_stat < TIfStat: TStat >  :
    )?   ;
 ```
 
-Generated parser stores data
-============================
+## Generated parser
 
 [output/cecko3_parser.py](output/cecko3_parser.py)
 
@@ -38,11 +36,9 @@ Generated parser stores data
       return result
 ```
 
-Class TIfStat stores **if** statement data.
+## Generated class
 
-**cond** field stores expression
-
-**then_code** and **else_code** fields store statements
+Class **TIfStat** stores **if** statement data.
 
 ```python
 class TIfStat (TStat) :
@@ -53,8 +49,7 @@ class TIfStat (TStat) :
       self.else_code = None
 ```
 
-Generated product prints data
-=============================
+## Generated product prints data
 
 [output/cecko3_pproduct.py](output/cecko3_product.py)
 
@@ -73,8 +68,7 @@ class Product (Output) :
          self.send_inner_stat (param.else_code)
 ```
 
-Selection
-=========
+## Select (sub classes)
 
 ```
 stat < select TStat > :
@@ -123,10 +117,67 @@ stat < select TStat > :
         self.code = None
 ```
 
-```mermaid
-graph TD;
-  TStat-->TIfSTat;
-  TStat-->TCompoundSTat;
-  TStat-->TSimpleStat;
-  TStat-->TEmptyStat;
+## Choose
+
 ```
+multiplicative_expr <choose CmmExpr>:
+  unary_expr
+  (
+     <new CmmMulExpr:CmmBinaryExpr>
+     <store left:CmmExpr>
+     ( '*' <set kind=mulExp> |
+       '/' <set kind=divExp> |
+       '%' <set kind=modExp> )
+     right:unary_expr
+  )* ;
+
+additive_expr <choose CmmExpr>:
+  multiplicative_expr
+  (
+     <new CmmAddExpr:CmmBinaryExpr>
+     <store left:CmmExpr>
+     ( '+' <set kind=addExp> |
+       '-' <set kind=subExp> )
+     right:multiplicative_expr
+  )* ;
+```
+
+```python
+   def parse_multiplicative_expr (self) :
+      result = self.parse_unary_expr ()
+      while self.tokenText == "%" or self.tokenText == "*" or self.tokenText == "/" :
+         store = result
+         result = CmmMulExpr ()
+         self.storeLocation (result)
+         result.left = store
+         if self.tokenText == "*" :
+            self.check ("*")
+            result.kind = result.mulExp
+         elif self.tokenText == "/" :
+            self.check ("/")
+            result.kind = result.divExp
+         elif self.tokenText == "%" :
+            self.check ("%")
+            result.kind = result.modExp
+         else :
+            self.error ("Unexpected token")
+         result.right = self.parse_unary_expr ()
+      return result
+```
+
+```python
+   def send_multiplicative_expr (self, param) :
+      if isinstance (param, CmmMulExpr) :
+         self.send_multiplicative_expr (param.left)
+         if param.kind == param.mulExp :
+            self.send ("*")
+         elif param.kind == param.divExp :
+            self.send ("/")
+         elif param.kind == param.modExp :
+            self.send ("%")
+         self.send_unary_expr (param.right)
+      else :
+         self.send_unary_expr (param)
+```
+
+
