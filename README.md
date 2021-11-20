@@ -185,6 +185,8 @@ additive_expr <choose CmmExpr>:
 ```
    if_stat  :  "if" "(" expr ")" stat ( "else" stat  )? ;
 ```
+https://en.wikipedia.org/wiki/Lout_(software)
+
 ```
 @SyntaxDiag
 title {if_stat}
