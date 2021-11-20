@@ -5,7 +5,7 @@ Parser generator written in Python
 
 [input/cecko3.g](input/cecko3.g)
 
-```
+```ebnf
 if_stat < TIfStat: TStat >  :
    "if"
    "(" cond:expr ")"
@@ -224,7 +224,7 @@ title {if_stat}
 
 ![pictures/symbol_numbers.png](pictures/symbol_numbers.png)
 
-### Derivation tree
+### Grammar internal representation
 
 ![pictures/simple_view.png](pictures/simple_view.png)
 
