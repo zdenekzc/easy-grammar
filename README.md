@@ -180,4 +180,29 @@ additive_expr <choose CmmExpr>:
          self.send_unary_expr (param)
 ```
 
+## Lout output
+
+![pictures/gram_lout.png]
+
+[output/cecko3.ps]
+
+## easy_view.py
+
+![pictures/easy_view.png]
+
+### Nullable rules
+
+![pictures/nullable.png]
+
+### First symbols
+
+![pictures/first_set.png]
+
+### Lexical symbols
+
+![pictures/symbol_numbers.png]
+
+### Derivation tree
+
+![pictures/simple_view.png]
 
