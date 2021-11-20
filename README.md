@@ -182,13 +182,13 @@ additive_expr <choose CmmExpr>:
 
 ## Lout output
 
-![pictures/gram_lout.png]
+![pictures/gram_lout.png](pictures/gram_lout.png)
 
-[output/cecko3.ps]
+[output/cecko3.ps](output/cecko3.ps)
 
 ## easy_view.py
 
-![pictures/easy_view.png]
+![pictures/easy_view.png](pictures/easy_view.png)
 
 ### Nullable rules
 
