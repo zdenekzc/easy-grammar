@@ -210,7 +210,7 @@ title {if_stat}
 
 [output/cecko3.pdf](output/cecko3.pdf)
 
-## easy_view.py
+## Program easy_view.py
 
 ![pictures/easy_view.png](pictures/easy_view.png)
 
@@ -228,5 +228,5 @@ title {if_stat}
 
 ### Grammar internal representation
 
-![pictures/simple_view.png](pictures/simple_view.png)
+![pictures/gram_tree.png](pictures/gram_tree.png)
 
