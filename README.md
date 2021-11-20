@@ -5,7 +5,7 @@ Parser generator written in Python
 
 [input/cecko3.g](input/cecko3.g)
 
-```ebnf
+```antlr
 if_stat < TIfStat: TStat >  :
    "if"
    "(" cond:expr ")"
@@ -49,7 +49,7 @@ class TIfStat (TStat) :
       self.else_code = None
 ```
 
-## Generated product prints data
+## Generated product prints original source
 
 [output/cecko3_pproduct.py](output/cecko3_product.py)
 
@@ -180,7 +180,7 @@ additive_expr <choose CmmExpr>:
          self.send_unary_expr (param)
 ```
 
-## Lout output
+## Lout diagrams
 
 ```
    if_stat  :  "if" "(" expr ")" stat ( "else" stat  )? ;
