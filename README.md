@@ -182,9 +182,31 @@ additive_expr <choose CmmExpr>:
 
 ## Lout output
 
+```
+   if_stat  :  "if" "(" expr ")" stat ( "else" stat  )? ;
+```
+```
+@SyntaxDiag
+title {if_stat}
+{
+   @StartRight
+   @Sequence
+   A {blue @Color @BCell "if"}
+   B {blue @Color @BCell "("}
+   C {@ACell "expr"}
+   D {blue @Color @BCell ")"}
+   E {@ACell "stat"}
+   F {@Optional
+         @Sequence
+         A {blue @Color @BCell "else"}
+         B {@ACell "stat"}
+   }
+}
+```
+
 ![pictures/gram_lout.png](pictures/gram_lout.png)
 
-[output/cecko3.ps](output/cecko3.ps)
+[output/cecko3.pdf](output/cecko3.pdf)
 
 ## easy_view.py
 
@@ -192,17 +214,17 @@ additive_expr <choose CmmExpr>:
 
 ### Nullable rules
 
-![pictures/nullable.png]
+![pictures/nullable.png](pictures/nullable.png)
 
 ### First symbols
 
-![pictures/first_set.png]
+![pictures/first_set.png](pictures/first_set.png)
 
 ### Lexical symbols
 
-![pictures/symbol_numbers.png]
+![pictures/symbol_numbers.png](pictures/symbol_numbers.png)
 
 ### Derivation tree
 
-![pictures/simple_view.png]
+![pictures/simple_view.png](pictures/simple_view.png)
 
