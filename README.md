@@ -70,7 +70,7 @@ class Product (Output) :
 
 ## Select (sub classes)
 
-```
+```antlr
 stat < select TStat > :
    while_stat | if_stat | compound_stat | simple_stat | empty_stat ;
 ```
@@ -119,7 +119,7 @@ stat < select TStat > :
 
 ## Choose
 
-```
+```antlr
 multiplicative_expr <choose CmmExpr>:
   unary_expr
   (
