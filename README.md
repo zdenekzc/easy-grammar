@@ -1,5 +1,5 @@
 # easy-grammar
-Object oriented parser generator written in Python 
+Step 2 - Object oriented parser generator written in Python
 
 ## Simple C grammar
 
